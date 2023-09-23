@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://cbeoj0jleyegn"]
+[gd_scene load_steps=3 format=3 uid="uid://cbeoj0jleyegn"]
+
+[ext_resource type="PackedScene" uid="uid://ctp3eiwd3mbeu" path="res://scenes/brid.tscn" id="1_7pnxt"]
+[ext_resource type="Script" path="res://scenes/PipeManager.gd" id="2_tvxcd"]
 
 [node name="World" type="Node2D"]
+
+[node name="Brid" parent="." instance=ExtResource("1_7pnxt")]
+position = Vector2(960, 540)
+
+[node name="PipeManager" type="Node2D" parent="."]
+position = Vector2(2179, 540)
+script = ExtResource("2_tvxcd")
+
+[node name="SpawnTimer" type="Timer" parent="PipeManager"]
+wait_time = 1.75
+autostart = true
+
+[connection signal="timeout" from="PipeManager/SpawnTimer" to="PipeManager" method="_on_spawn_timer_timeout"]
