@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cxmw35exfm3b5" path="res://graphics/unitytut-birdwingdown.png" id="4_7tlu6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhvwd"]
-radius = 136.842
+radius = 126.316
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gng1p"]
-radius = 40.3113
+radius = 36.0
 
 [node name="Brid" type="RigidBody2D"]
 process_mode = 3

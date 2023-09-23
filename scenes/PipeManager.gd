@@ -3,13 +3,18 @@ extends Node2D
 @onready var score = 0
 
 @onready var pipe: PackedScene = preload("res://scenes/pipe.tscn")
+
 @export var speed = 2.5
+@export var spawn_delay = 1.75
 @export var spawn_y_offset = 300
 
 @onready var is_paused = false
 
 func _ready():
 	spawn_pipe()
+
+func _process(_delta):
+	$SpawnTimer.wait_time = spawn_delay
 
 func spawn_pipe():
 	var pipe_instance = pipe.instantiate() as Node
