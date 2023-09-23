@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var score = 0
 
-@onready var pipe: PackedScene = preload("res://scenes/pipe.tscn")
+@onready var pipe: PackedScene = preload("res://scenes/pipe_base/pipe.tscn")
 
 @export var speed = 2.5
 @export var spawn_delay = 1.75
