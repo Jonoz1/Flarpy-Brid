@@ -15,6 +15,7 @@ run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/image="res://splash.png"
 config/icon="res://graphics/unitytut-birdbody.png"
+boot_splash/minimum_display_time=1250
 
 [display]
 

@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbeoj0jleyegn"]
+[gd_scene load_steps=6 format=3 uid="uid://cbeoj0jleyegn"]
 
 [ext_resource type="PackedScene" uid="uid://ctp3eiwd3mbeu" path="res://scenes/brid/brid.tscn" id="1_7pnxt"]
 [ext_resource type="Script" path="res://scenes/pipe_manager/pipe_manager.gd" id="2_ginfn"]
 [ext_resource type="PackedScene" uid="uid://bqrpyoqrj1bqp" path="res://scenes/score_ui/score.tscn" id="3_8n470"]
 [ext_resource type="PackedScene" uid="uid://dmeyo07js7bon" path="res://scenes/pause_menu_ui/pause_menu.tscn" id="4_k12jp"]
+[ext_resource type="Texture2D" uid="uid://cdkd4017ercvg" path="res://graphics/background.jpg" id="5_g5krh"]
 
 [node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(953, 591)
+scale = Vector2(0.800781, 0.773125)
+texture = ExtResource("5_g5krh")
 
 [node name="Brid" parent="." instance=ExtResource("1_7pnxt")]
 position = Vector2(960, 540)
