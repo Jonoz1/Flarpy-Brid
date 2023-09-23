@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctp3eiwd3mbeu"]
+[gd_scene load_steps=7 format=3 uid="uid://ctp3eiwd3mbeu"]
 
 [ext_resource type="Texture2D" uid="uid://by67iq4t0wk6c" path="res://graphics/unitytut-birdbody.png" id="1_5ld5b"]
 [ext_resource type="Script" path="res://scenes/brid.gd" id="1_ph2wj"]
+[ext_resource type="Texture2D" uid="uid://custxyeysgvys" path="res://graphics/unitytut-birdwingup.png" id="3_t3dmc"]
+[ext_resource type="Texture2D" uid="uid://cxmw35exfm3b5" path="res://graphics/unitytut-birdwingdown.png" id="4_7tlu6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhvwd"]
 radius = 136.842
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gng1p"]
+radius = 40.3113
+
 [node name="Brid" type="RigidBody2D"]
+process_mode = 3
 script = ExtResource("1_ph2wj")
 
 [node name="Unitytut-birdbody" type="Sprite2D" parent="."]
@@ -17,3 +23,26 @@ texture = ExtResource("1_5ld5b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.285, 0.285)
 shape = SubResource("CircleShape2D_yhvwd")
+
+[node name="Unitytut-birdwingup" type="Sprite2D" parent="."]
+position = Vector2(-35.921, 16.114)
+scale = Vector2(0.210517, 0.223201)
+texture = ExtResource("3_t3dmc")
+
+[node name="Unitytut-birdwingdown" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-35.921, 23.114)
+scale = Vector2(0.207, 0.207)
+texture = ExtResource("4_7tlu6")
+
+[node name="FlapTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gng1p")
+
+[connection signal="timeout" from="FlapTimer" to="." method="_on_flap_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

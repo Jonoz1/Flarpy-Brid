@@ -1,17 +1,75 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyb2fp2gm8crc"]
+[gd_scene load_steps=9 format=3 uid="uid://cyb2fp2gm8crc"]
 
 [ext_resource type="Texture2D" uid="uid://txyor3ytyr42" path="res://graphics/unitytut-pipe.png" id="1_lrskk"]
 [ext_resource type="Script" path="res://scenes/pipe.gd" id="1_qsyn1"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ue084"]
+bounce = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrb4r"]
+size = Vector2(470.44, 2185.39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6jnm"]
+size = Vector2(325.3, 31.8564)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihda5"]
+size = Vector2(470.44, 2185.39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbxuf"]
+size = Vector2(323.146, 127.071)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qhqa2"]
+a = Vector2(0, -188)
+b = Vector2(0, 142)
+
 [node name="Pipe" type="Node2D"]
 script = ExtResource("1_qsyn1")
 
-[node name="Unitytut-pipe" type="Sprite2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+process_mode = 3
+physics_material_override = SubResource("PhysicsMaterial_ue084")
+
+[node name="Up" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(0, -633)
 scale = Vector2(0.285173, 0.407251)
 texture = ExtResource("1_lrskk")
 
-[node name="Unitytut-pipe2" type="Sprite2D" parent="."]
+[node name="Down" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(0, 587)
 scale = Vector2(0.285, -0.407)
 texture = ExtResource("1_lrskk")
+
+[node name="UpLong" type="CollisionShape2D" parent="StaticBody2D"]
+process_mode = 3
+position = Vector2(-1.07839, -633)
+scale = Vector2(0.285173, 0.407251)
+shape = SubResource("RectangleShape2D_xrb4r")
+
+[node name="UpShort" type="CollisionShape2D" parent="StaticBody2D"]
+process_mode = 3
+visible = false
+position = Vector2(-0.499994, -214)
+scale = Vector2(0.464187, -1.63233)
+shape = SubResource("RectangleShape2D_h6jnm")
+disabled = true
+
+[node name="DownLong" type="CollisionShape2D" parent="StaticBody2D"]
+process_mode = 3
+position = Vector2(-1.00001, 587)
+scale = Vector2(0.285173, -0.407251)
+shape = SubResource("RectangleShape2D_ihda5")
+
+[node name="DownShort" type="CollisionShape2D" parent="StaticBody2D"]
+process_mode = 3
+visible = false
+position = Vector2(2.563e-06, 168.125)
+scale = Vector2(0.464186, -0.407251)
+shape = SubResource("RectangleShape2D_tbxuf")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_qhqa2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
