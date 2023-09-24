@@ -19,7 +19,6 @@ position = Vector2(960, 540)
 [node name="PipeManager" type="Node2D" parent="."]
 position = Vector2(2179, 540)
 script = ExtResource("2_ginfn")
-speed = 8.0
 spawn_delay = 1.0
 
 [node name="SpawnTimer" type="Timer" parent="PipeManager"]

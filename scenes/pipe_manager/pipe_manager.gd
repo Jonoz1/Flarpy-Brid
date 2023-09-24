@@ -4,7 +4,7 @@ extends Node2D
 
 @onready var pipe: PackedScene = preload("res://scenes/pipe_base/pipe.tscn")
 
-@export var speed = 2.5
+@export var speed = 750
 @export var spawn_delay = 1.75
 @export var spawn_y_offset = 300
 

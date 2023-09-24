@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmeyo07js7bon"]
+[gd_scene load_steps=3 format=3 uid="uid://dmeyo07js7bon"]
 
 [ext_resource type="Script" path="res://scenes/pause_menu_ui/pause_menu.gd" id="1_i1ael"]
+
+[sub_resource type="Theme" id="Theme_u7ujr"]
+CheckButton/constants/check_v_offset = 3
+CheckButton/constants/h_separation = 4
+CheckButton/font_sizes/font_size = 25
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -83,5 +88,25 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Exit"
 
+[node name="MarginContainer3" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 5
+
+[node name="FullScreen" type="CheckButton" parent="Control/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_u7ujr")
+theme_override_font_sizes/font_size = 31
+text = "Full Screen"
+
 [connection signal="pressed" from="Control/MarginContainer2/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer2/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Control/MarginContainer3/FullScreen" to="." method="_on_full_screen_toggled"]
